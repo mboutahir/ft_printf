@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_str.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mboutahi <mboutahi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/27 14:45:26 by mboutahi          #+#    #+#             */
+/*   Updated: 2024/12/01 12:09:59 by mboutahi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int print_str(char *s)
+int	print_str(char *s)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if(!s)
-    {
-        return write(1, "(null)", 6);
-    }
-    while (s[i])
-    {
-        print_char(s[i]);
-        i++;
-    }
-    return i;
+	i = 0;
+	if (!s)
+	{
+		return (write(1, "(null)", 6));
+	}
+	while (s[i])
+	{
+		print_char(s[i]);
+		i++;
+	}
+	return (i);
 }

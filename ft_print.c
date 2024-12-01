@@ -1,61 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mboutahi <mboutahi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/27 14:45:02 by mboutahi          #+#    #+#             */
+/*   Updated: 2024/12/01 16:48:31 by mboutahi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int print_format(int specifier, va_list arg)
+int	print_format(int specifier, va_list arg)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (specifier == 'c')
 		count += print_char(va_arg(arg, int));
 	else if (specifier == 's')
-		count += print_str(va_arg(arg, char *));    
+		count += print_str(va_arg(arg, char *));
 	else if (specifier == 'd' || specifier == 'i')
 		count += print_degit(va_arg(arg, int), specifier, 10);
 	else if (specifier == 'x' || specifier == 'X')
-		count += print_degit((long)va_arg(arg, unsigned int), specifier, 16);
+		count += print_degit(va_arg(arg, unsigned int), specifier, 16);
 	else if (specifier == 'p')
-		count += print_pointer(va_arg(arg, unsigned long));
+		count += print() + print_pointer(va_arg(arg, unsigned long));
 	else if (specifier == 'u')
 		count += print_unsigned(va_arg(arg, unsigned int));
-	return count;
+	return (count);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	int count;
-	va_list arg;
-	int	i;
+	int		count;
+	int		i;
+	va_list	arg;
 
-	i = 0;
 	va_start(arg, format);
 	count = 0;
+	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			if(format[i + 1] == '%')
+			if (format[i + 1] == '%')
 			{
 				count += write(1, "%", 1);
 				i += 2;
-				continue;
+				continue ;
 			}
 			else
-				count += print_format(format[++i], arg);
+				count += print_format((int)format[++i], arg);
 		}
 		else
 			count += write(1, &format[i], 1);
-		i++;
+		if (format[i])
+			i++;
 	}
-	va_end(arg);
-	return (count);
+	return (va_end(arg), count);
 }
-int main()
-{
 
-	 int count = printf("%p\n", p);
-	int count1 = ft_printf("%p", p);
-
-	 printf("%d \n", count);
-	 ft_printf("%d", count1);
-	
-}
