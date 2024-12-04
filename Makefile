@@ -6,7 +6,7 @@
 #    By: mboutahi <mboutahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:45:10 by mboutahi          #+#    #+#              #
-#    Updated: 2024/12/01 11:59:59 by mboutahi         ###   ########.fr        #
+#    Updated: 2024/12/03 18:11:41 by mboutahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ all: $(NAME)
  
 $(NAME) : $(OBJ)
 	$(AR) $(ARFLAG) $(NAME) $?
-
 %.o: %.c ft_print.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -42,4 +41,4 @@ fclean: clean
 
 re : fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

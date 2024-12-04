@@ -6,7 +6,7 @@
 /*   By: mboutahi <mboutahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:45:16 by mboutahi          #+#    #+#             */
-/*   Updated: 2024/12/01 15:33:32 by mboutahi         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:28:14 by mboutahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ int	print_degit(long n, int specifier, int base)
 
 	sym = "0123456789abcdef";
 	symg = "0123456789ABCDEF";
-	if (n == -2147483648 && base == 10)
-	{
-		return (write(1, "-2147483648", 11));
-	}
-	else if (n < 0)
+	if (n < 0)
 	{
 		write(1, "-", 1);
 		return ((print_degit(-n, specifier, base)) + 1);

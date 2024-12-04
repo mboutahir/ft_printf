@@ -6,7 +6,7 @@
 /*   By: mboutahi <mboutahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:45:26 by mboutahi          #+#    #+#             */
-/*   Updated: 2024/12/01 12:09:59 by mboutahi         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:58:44 by mboutahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ int	print_str(char *s)
 	i = 0;
 	if (!s)
 	{
-		return (write(1, "(null)", 6));
+		write(1, "(null)", 6);
+		return (6);
 	}
 	while (s[i])
 	{
-		print_char(s[i]);
+		write(1, &s[i], 1);
 		i++;
 	}
 	return (i);

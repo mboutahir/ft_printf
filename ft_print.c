@@ -6,7 +6,7 @@
 /*   By: mboutahi <mboutahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:45:02 by mboutahi          #+#    #+#             */
-/*   Updated: 2024/12/01 16:48:31 by mboutahi         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:26:06 by mboutahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ int	print_format(int specifier, va_list arg)
 		count += print() + print_pointer(va_arg(arg, unsigned long));
 	else if (specifier == 'u')
 		count += print_unsigned(va_arg(arg, unsigned int));
+	else
+	{
+		write(1, &specifier, 1);
+		count++;
+	}
 	return (count);
 }
 
@@ -45,20 +50,17 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '%')
-			{
-				count += write(1, "%", 1);
-				i += 2;
-				continue ;
-			}
-			else
-				count += print_format((int)format[++i], arg);
+			if (format[i + 1] == '\0')
+				break ;
+			count += print_format((int)format[++i], arg);
 		}
 		else
-			count += write(1, &format[i], 1);
+		{
+			write(1, &format[i], 1);
+			count++;
+		}
 		if (format[i])
 			i++;
 	}
 	return (va_end(arg), count);
 }
-

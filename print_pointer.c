@@ -6,7 +6,7 @@
 /*   By: mboutahi <mboutahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:45:22 by mboutahi          #+#    #+#             */
-/*   Updated: 2024/12/01 12:10:23 by mboutahi         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:42:56 by mboutahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print(void)
 {
-	return (write(1, "0x", 2));
+	return (write(1, "0x", 2), 2);
 }
 
 int	print_pointer(unsigned long n)
@@ -25,7 +25,7 @@ int	print_pointer(unsigned long n)
 	sym = "0123456789abcdef";
 	if (n == 0)
 	{
-		return (write(1, "0", 1));
+		return (write(1, "0", 1), 1);
 	}
 	if (n < 16)
 	{
